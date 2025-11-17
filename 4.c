@@ -55,13 +55,13 @@ int main()
     } 
     
     int choice;
-    // 修正switch结构及相
+    //
     do
     {
         menu();
         printf("请选择功能(输入对应的数字): ");
         scanf("%d",&choice);
-        switch(choice)  // 确保此处符号为英文半角
+        switch(choice)  
         {
             case 1:
                 study();
@@ -78,7 +78,7 @@ int main()
             case 0:
                 printf("程序已退出，再见！\n");
                 break;
-            default:  // 建议增加default分支处理无效输入
+            default:  // default分支处理无效输入
                 printf("输入无效，请重新选择！\n");
         }
         if(choice == 0)  // 输入0时退出循环
@@ -190,4 +190,5 @@ void technology()
     default:
         break;
     }
+
 }
