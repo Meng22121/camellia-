@@ -49,9 +49,20 @@ void menu(struct Student *stu) {
 }
 
 // 登录函数
-int login()
-{
-	char usename[30];
+
+
+
+int main() {
+    // 定义结构体变量并初始化
+    struct Student student;
+    my_strcpy(student.name,"zhangsan");
+    my_strcpy(student.number,"211730");
+    student.gender='N';
+    student.height=1.80;
+    
+    // 指针使用：创建指向结构体的指针
+    struct Student *stu_a = &student;
+    char usename[30];
     char password[30];
     int num=5;
     char rightname[]="zhangsan";
@@ -68,13 +79,16 @@ int login()
         && my_strcmp(password,rightword)==0)
         {
             printf("登录成功\n");
-            return 1;
+            break; 
+            
+            
+        
 
         }
         else
         {
             if(num>0)
-            printf("“用户名或密码输入错误，还有%d次机会，请重新输入\n",&num);
+            printf("用户名或密码输入错误，还有%d次机会，请重新输入\n",num);
             else
             {
                 
@@ -88,24 +102,9 @@ int login()
         }
 
     }
-    return 0;
-} 
-
-int main() {
-    // 定义结构体变量并初始化
-    struct Student student;
-    my_strcpy(student.name,"zhangsan");
-    my_strcpy(student.number,"211730");
-    student.gender='N';
-    student.height=1.80;
-    
-    // 指针使用：创建指向结构体的指针
-    struct Student *stu_a = &student;
     
     // 登录验证
-    if (!login()) {
-        return 0;  // 登录失败，程序退出
-    }
+   
     
     int choice;
     char new_name[50];
@@ -115,35 +114,35 @@ int main() {
     
     // 主程序循环
     while (1) {
-        menu(stu_a);  // 使用指针访问结构体
+        menu(stu_a);  
         scanf("%d", &choice);
         
         switch (choice) {
             case 1:
                 printf("输入新的姓名：");
                 scanf("%s", new_name);
-                my_strcpy(stu_a->name, new_name);  // 使用指针修改结构体成员
+                my_strcpy(stu_a->name, new_name);  // 使用指针修改结构体
                 printf("姓名已更新\n");
                 break;
                 
             case 2:
                 printf("输入新的学号：");
                 scanf("%s", new_number);
-                my_strcpy(stu_a->number, new_number);  // 使用指针修改结构体成员
+                my_strcpy(stu_a->number, new_number);  // 使用指针修改结构体
                 printf("学号已更新\n");
                 break;
                 
             case 3:
                 printf("输入新的性别（N代表男生，M代表女生）：");
-                scanf(" %c", &new_gender);  // 注意空格，避免读取之前的换行符
-                stu_a->gender = new_gender;  // 使用指针修改结构体成员
+                scanf(" %c", &new_gender);  
+                stu_a->gender = new_gender;  // 使用指针修改结构体
                 printf("性别已更新\n");
                 break;
                 
             case 4:
                 printf("输入新的身高（单位：米）：");
                 scanf("%f", &new_height);
-                stu_a->height = new_height;  // 使用指针修改结构体成员
+                stu_a->height = new_height;  // 使用指针修改结构体
                 printf("身高已更新\n");
                 break;
                 
